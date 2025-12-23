@@ -1,6 +1,6 @@
 export const parseGamesCSV = async () => {
   try {
-    const response = await fetch('${basePath}games.csv')
+    const response = await fetch('/web-project/games.csv')
     const text = await response.text()
     const lines = text.split('\n')
     const headers = lines[0].split(',')
