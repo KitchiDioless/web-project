@@ -35,6 +35,16 @@ jobs:
 
         env:
           VITE_BASE_PATH: '/web-project/'
+
+      - name: Verify CSV is in dist
+        run: |
+          ls -la dist/
+          if [ -f "dist/games.csv" ]; then
+            echo "CSV файл найден в dist"
+          else
+            echo "CSV файл не найден"
+            cp public/games.csv dist/ || true
+          fi
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
