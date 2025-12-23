@@ -1,7 +1,6 @@
-// Парсер CSV файла с играми
 export const parseGamesCSV = async () => {
   try {
-    const response = await fetch('/games.csv')
+    const response = await fetch('${basePath}games.csv')
     const text = await response.text()
     const lines = text.split('\n')
     const headers = lines[0].split(',')
@@ -12,7 +11,6 @@ export const parseGamesCSV = async () => {
       const line = lines[i].trim()
       if (!line) continue
       
-      // Простой парсинг CSV (учитываем кавычки)
       const values = []
       let current = ''
       let inQuotes = false
@@ -32,7 +30,6 @@ export const parseGamesCSV = async () => {
       
       if (values.length < headers.length) continue
       
-      // Парсим теги из JSON строки
       let tags = []
       try {
         const tagsStr = values[9] || '[]'
@@ -71,7 +68,6 @@ export const parseGamesCSV = async () => {
   }
 }
 
-// Получить описание игры на основе данных
 export const getGameDescription = (game) => {
   if (!game) return ''
   
