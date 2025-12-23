@@ -9,6 +9,11 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  base: '/web-project/',
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+  },
   server: {
     hmr: {
       overlay: true,

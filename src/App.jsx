@@ -14,7 +14,7 @@ import LoginPage from "./pages/LoginPage"
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/web-project/">
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -54,7 +54,6 @@ function App() {
   )
 }
 
-// Компонент для защиты маршрутов, требующих авторизации
 const ProtectedRoute = ({ children }) => {
   const { isUser, loading } = useAuth()
   
@@ -65,7 +64,6 @@ const ProtectedRoute = ({ children }) => {
   return isUser() ? children : <Navigate to="/login" replace />
 }
 
-// Компонент для защиты админских маршрутов
 const AdminRoute = ({ children }) => {
   const { isAdmin, loading } = useAuth()
   
